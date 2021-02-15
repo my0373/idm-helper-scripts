@@ -5,6 +5,13 @@ REALM="LAB.NIXGEEK.CO.UK"
 HOSTNAME="idm-server.lab.nixgeek.co.uk"
 INSTALL_LOG_LOCATION="/var/log/idm-install-log"
 NTP_SERVER="172.16.0.1"
+
+## Enable repos because i'm too lazy to write some ansible
+yum module enable idm:DL1
+yum module install idm:DL1/dns
+yum module install idm:DL1/client
+
+## Install IDM server
 /usr/sbin/ipa-server-install  \
 			    --unattended  \
     			    --ds-password=${PASSWORD}  \
