@@ -4,6 +4,7 @@ DOMAIN="lab.nixgeek.co.uk"
 REALM="LAB.NIXGEEK.CO.UK" 
 HOSTNAME="idm-server.lab.nixgeek.co.uk"
 INSTALL_LOG_LOCATION="/var/log/idm-install-log"
+NTP_SERVER="172.16.0.1"
 /usr/sbin/ipa-server-install  \
 			    --unattended  \
     			    --ds-password=${PASSWORD}  \
@@ -19,7 +20,8 @@ INSTALL_LOG_LOCATION="/var/log/idm-install-log"
     			    --auto-forwarders  \
     			    --forward-policy=only  \
     			    --log-file=${INSTALL_LOG_LOCATION}  \
-			    --mkhomedir
+			    --mkhomedir  \
+			    --ntp-server=${NTP_SERVER}
 ## Convenience as i'm lazy
 systemctl stop firewalld
 systemctl disable firewalld
